@@ -11,7 +11,7 @@
         error = null;
         success = null;
         try {
-            const result = await invoke<string>("process_pdf", { paths });
+            const result = await invoke<string>("open_pdf", { paths });
             success = result;
         } catch (err) {
             error = err instanceof Error ? err.message : String(err);
