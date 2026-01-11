@@ -19,7 +19,6 @@ fn process_pdf(paths: Vec<String>) -> Result<String, String> {
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
-        .plugin(tauri_plugin_window_state::Builder::new().build())
         .invoke_handler(tauri::generate_handler![process_pdf])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

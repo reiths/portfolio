@@ -24,20 +24,16 @@ tauri = { version = "2", features = [] }
 tauri-plugin-opener = "2"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-tauri-plugin-window-state = "2"
 
 [profile.dev]
 incremental = true          # Compile the binary in smaller steps
 rustflags = ["-Zthreads=8"] # Better compile performance
 
 [profile.release]
-codegen-units = 1                               # Allow LLVM to perform better optimization
-lto = true                                      # Enable link-time-optimizations
-opt-level = "s"                                 # Prioritize small binary size. Use `3` if speed is preferred.
-panic = "abort"                                 # Higher performance by disabling panic handlers
-strip = true                                    # Ensure debug symbols are removed
-trim-paths = "all"                              # Remove potentially privileged information from the binaries
-rustflags = ["-Cdebuginfo=0", "-Zthreads=8"]    # Better compile performance
-
-[target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
-tauri-plugin-window-state = "2"
+codegen-units = 1                            # Allow LLVM to perform better optimization
+lto = true                                   # Enable link-time-optimizations
+opt-level = "s"                              # Prioritize small binary size. Use `3` if speed is preferred.
+panic = "abort"                              # Higher performance by disabling panic handlers
+strip = true                                 # Ensure debug symbols are removed
+trim-paths = "all"                           # Remove potentially privileged information from the binaries
+rustflags = ["-Cdebuginfo=0", "-Zthreads=8"] # Better compile performance
